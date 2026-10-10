@@ -10,9 +10,7 @@ model and uses a **Perturb & Observe (P&O) Maximum Power Point Tracker** to foll
 peak. A potentiometer stands in for the sun, and an OLED shows voltage, current, power, the
 theoretical maximum and the tracking efficiency in real time.
 
-**Live simulation:** `https://wokwi.com/projects/<YOUR_PROJECT_ID>` (replace after sharing your Wokwi project)
-
-<!-- TODO: add a screenshot of the running Wokwi circuit as docs/images/wokwi_oled.png and show it here -->
+**Live simulation:** https://wokwi.com/projects/477459931358690305
 
 ## What it demonstrates
 
@@ -46,31 +44,6 @@ The equations and a flowchart are in [`docs/theory.md`](docs/theory.md).
 | LED + 220 Ω on GP15 | "At maximum power point" indicator |
 
 Full pin table: [`docs/wiring.md`](docs/wiring.md).
-
-## Repository structure
-
-```
-mppt-solar-pv-monitor-pico/
-├── README.md
-├── LICENSE
-├── .gitignore
-├── src/
-│   ├── main.py              # PV model, P&O tracker, display and logging (runs on the Pico)
-│   └── ssd1306.py           # OLED driver (I2C)
-├── wokwi/
-│   └── diagram.json         # Circuit for Wokwi
-├── analysis/
-│   ├── simulate_mppt.py     # Offline run of the same algorithm; writes CSV and figures
-│   └── requirements.txt
-├── data/
-│   └── sample_run.csv       # Output of simulate_mppt.py, same columns as the serial log
-└── docs/
-    ├── theory.md            # Model, MPP condition, P&O, limitations, references
-    ├── wiring.md            # Pin-by-pin connections
-    └── images/
-        ├── pv_curves.png
-        └── tracking.png
-```
 
 ## Run it in Wokwi
 
