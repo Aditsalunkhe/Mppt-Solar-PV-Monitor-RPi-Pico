@@ -32,7 +32,7 @@ Every 100 ms the program:
 5. Compares P with the previous cycle: if it dropped, the voltage step reverses; then V changes
    by 0.2 V.
 
-The equations and a flowchart are in [`docs/theory.md`](docs/theory.md).
+The equations and a flowchart are in [`theory.md`](theory.md).
 
 ## Hardware (simulated)
 
@@ -43,14 +43,14 @@ The equations and a flowchart are in [`docs/theory.md`](docs/theory.md).
 | SSD1306 128×64 OLED on I²C (GP4/GP5) | Live display |
 | LED + 220 Ω on GP15 | "At maximum power point" indicator |
 
-Full pin table: [`docs/wiring.md`](docs/wiring.md).
+Full pin table: [`wiring.md`](wiring.md).
 
 ## Run it in Wokwi
 
 1. On [wokwi.com](https://wokwi.com) create a new **Raspberry Pi Pico → MicroPython** project.
-2. Replace the contents of the `diagram.json` tab with [`wokwi/diagram.json`](wokwi/diagram.json).
-3. Add a new file `ssd1306.py` and paste [`src/ssd1306.py`](src/ssd1306.py).
-4. Replace `main.py` with [`src/main.py`](src/main.py).
+2. Replace the contents of the `diagram.json` tab with [`diagram.json`](diagram.json).
+3. Add a new file `ssd1306.py` and paste [`ssd1306.py`](ssd1306.py).
+4. Replace `main.py` with [`main.py`](main.py).
 5. Press **Play** and turn the potentiometer. Open the serial monitor to see the CSV log
    (`t_ms,G,V,I,P,Pmax,Vmpp,eff`).
 
@@ -61,8 +61,8 @@ pip install -r analysis/requirements.txt
 python analysis/simulate_mppt.py
 ```
 
-This re-runs the same model and P&O update in CPython, rewrites `data/sample_run.csv` and
-regenerates both figures. It is a re-implementation of the algorithm in `src/main.py`, not a
+This re-runs the same model and P&O update in CPython, rewrites `sample_run.csv` and
+regenerates both figures. It is a re-implementation of the algorithm in `main.py`, not a
 capture from the Wokwi serial monitor.
 
 ## Results
@@ -70,12 +70,12 @@ capture from the Wokwi serial monitor.
 I–V and P–V curves of the modelled 36-cell panel. The maximum power point moves as irradiance
 changes:
 
-![PV curves](docs/images/pv_curves.png)
+![PV curves](pv_curves.png)
 
 Irradiance is stepped 1000 → 550 → 235 → 100 → 1000 W/m². The tracker re-converges within a few
 seconds each time and then oscillates by about ±0.2 V around the true peak:
 
-![Tracking](docs/images/tracking.png)
+![Tracking](tracking.png)
 
 Settled operating points (end of each 10 s segment):
 
