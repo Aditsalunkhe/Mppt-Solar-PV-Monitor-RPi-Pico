@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "author": "Solar PV MPPT monitor",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 20, "left": 150, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled1", "top": 30, "left": -190, "attrs": { "i2cAddress": "0x3c" } },
+    { "type": "wokwi-led", "id": "led1", "top": 240, "left": -110, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 200, "left": -150, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "pot1:SIG", "pico:GP26", "green", [ "v0" ] ],
+    [ "pot1:VCC", "pico:3V3", "red", [ "v0" ] ],
+    [ "pot1:GND", "pico:GND.7", "black", [ "v0" ] ],
+    [ "oled1:SDA", "pico:GP4", "blue", [ "v0" ] ],
+    [ "oled1:SCL", "pico:GP5", "purple", [ "v0" ] ],
+    [ "oled1:VCC", "pico:3V3", "red", [ "v0" ] ],
+    [ "oled1:GND", "pico:GND.1", "black", [ "v0" ] ],
+    [ "pico:GP15", "r1:1", "orange", [ "v0" ] ],
+    [ "r1:2", "led1:A", "orange", [ "v0" ] ],
+    [ "led1:C", "pico:GND.4", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
